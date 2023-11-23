@@ -7,6 +7,10 @@ import {
 } from '@nestjs/common'
 import { hash } from 'bcryptjs'
 import { PrismaService } from 'src/prisma/prisma.service'
+import {
+  CreateAccountBodySchema,
+  createAccountBodySchema,
+} from 'src/schemas/create-account-schema'
 
 @Controller('/accounts')
 export class CreateAccountController {
@@ -14,8 +18,8 @@ export class CreateAccountController {
 
   @Post()
   @HttpCode(201)
-  async handle(@Body() body: any) {
-    const { name, email, password } = body
+  async handle(@Body() body: CreateAccountBodySchema) {
+    const { name, email, password } = createAccountBodySchema.parse(body)
 
     const userWithSameEmail = await this.prisma.user.findUnique({
       where: {
