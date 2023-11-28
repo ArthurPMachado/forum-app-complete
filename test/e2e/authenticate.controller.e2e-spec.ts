@@ -5,7 +5,7 @@ import { Test } from '@nestjs/testing'
 import { AppModule } from '@/app.module'
 import { PrismaService } from '@/prisma/prisma.service'
 
-describe('Create account (E2E)', () => {
+describe('Authenticate (E2E)', () => {
   let app: INestApplication
   let prisma: PrismaService
 
