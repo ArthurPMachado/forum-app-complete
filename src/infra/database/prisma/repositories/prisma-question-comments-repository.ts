@@ -2,27 +2,30 @@ import { IPaginationParams } from '@/core/repositories/pagination-params'
 import { IQuestionCommentsRepository } from '@/domain/forum/application/repositories/interfaces/question-comments-repository'
 import { QuestionComment } from '@/domain/forum/enterprise/entities/question-comment'
 import { Injectable } from '@nestjs/common'
+import { PrismaService } from '../prisma.service'
 
 @Injectable()
 export class PrismaQuestionCommentsRepository
   implements IQuestionCommentsRepository
 {
-  create(questionComment: QuestionComment): Promise<void> {
+  constructor(private prisma: PrismaService) {}
+
+  async create(questionComment: QuestionComment): Promise<void> {
     throw new Error('Method not implemented.')
   }
 
-  findById(id: string): Promise<QuestionComment | null> {
+  async findById(id: string): Promise<QuestionComment | null> {
     throw new Error('Method not implemented.')
   }
 
-  findManyByQuestionId(
+  async findManyByQuestionId(
     questionId: string,
     params: IPaginationParams,
   ): Promise<QuestionComment[]> {
     throw new Error('Method not implemented.')
   }
 
-  delete(questionComment: QuestionComment): Promise<void> {
+  async delete(questionComment: QuestionComment): Promise<void> {
     throw new Error('Method not implemented.')
   }
 }
