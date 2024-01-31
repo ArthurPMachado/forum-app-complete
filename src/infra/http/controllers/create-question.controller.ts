@@ -5,7 +5,7 @@ import {
   createQuestionBodySchema,
 } from '../schemas/create-question-schema'
 import { JwtAuthGuard } from '@/infra/auth/jwt-auth.guard'
-import { PrismaService } from '@/infra/prisma/prisma.service'
+import { PrismaService } from '@/infra/database/prisma/prisma.service'
 import { CurrentUser } from '@/infra/auth/current-user-decorator'
 import { UserPayloadSchema } from '../schemas/token-schema'
 

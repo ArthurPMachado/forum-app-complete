@@ -5,7 +5,7 @@ import {
   pageQueryParamSchema,
 } from '../schemas/page-query-param-schema'
 import { JwtAuthGuard } from '@/infra/auth/jwt-auth.guard'
-import { PrismaService } from '@/infra/prisma/prisma.service'
+import { PrismaService } from '@/infra/database/prisma/prisma.service'
 
 const queryValidationPipe = new ZodValidationPipe(pageQueryParamSchema)
 
