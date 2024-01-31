@@ -4,7 +4,7 @@ import { QuestionAttachmentList } from '../question-attachment-list'
 
 export interface IQuestionProps {
   authorId: UniqueEntityID
-  bestAnswerId?: UniqueEntityID
+  bestAnswerId?: UniqueEntityID | null
   title: string
   slug: Slug
   content: string
