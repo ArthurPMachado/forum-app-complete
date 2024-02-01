@@ -8,4 +8,16 @@ export class Student extends Entity<IStudentProps> {
 
     return student
   }
+
+  get name() {
+    return this.props.name
+  }
+
+  get email() {
+    return this.props.email
+  }
+
+  get password() {
+    return this.props.password
+  }
 }
