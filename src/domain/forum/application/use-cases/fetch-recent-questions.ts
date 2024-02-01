@@ -4,7 +4,9 @@ import {
   IFetchRecentQuestionsUseCaseRequest,
   IFetchRecentQuestionsUseCaseResponse,
 } from './interfaces/IFetchRecentQuestionsUseCase'
+import { Injectable } from '@nestjs/common'
 
+@Injectable()
 export class FetchRecentQuestionsUseCase {
   constructor(private questionsRepository: IQuestionsRepository) {}
 

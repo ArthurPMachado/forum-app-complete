@@ -5,25 +5,19 @@ import {
   pageQueryParamSchema,
 } from '../schemas/page-query-param-schema'
 import { JwtAuthGuard } from '@/infra/auth/jwt-auth.guard'
-import { PrismaService } from '@/infra/database/prisma/prisma.service'
+import { FetchRecentQuestionsUseCase } from '@/domain/forum/application/use-cases/fetch-recent-questions'
 
 const queryValidationPipe = new ZodValidationPipe(pageQueryParamSchema)
 
 @Controller('/questions')
 @UseGuards(JwtAuthGuard)
 export class FetchRecentQuestionsController {
-  constructor(private prisma: PrismaService) {}
+  constructor(private fetchRecentQuestions: FetchRecentQuestionsUseCase) {}
 
   @Get()
   async handle(@Query('page', queryValidationPipe) page: PageQueryParamSchema) {
-    const perPage = 20
-
-    const questions = await this.prisma.question.findMany({
-      take: 2,
-      skip: (page - 1) * perPage,
-      orderBy: {
-        createdAt: 'desc',
-      },
+    const questions = await this.fetchRecentQuestions.execute({
+      page,
     })
 
     return {
