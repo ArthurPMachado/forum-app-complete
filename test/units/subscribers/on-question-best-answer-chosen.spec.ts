@@ -61,7 +61,7 @@ describe('On Question Best Answer Chosen', () => {
 
     question.bestAnswerId = answer.id
 
-    inMemoryQuestionsRepository.save(question)
+    await inMemoryQuestionsRepository.save(question)
 
     await waitFor(() => {
       expect(sendNotificationExecuteSpy).toHaveBeenCalled()
