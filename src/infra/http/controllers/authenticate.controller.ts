@@ -14,8 +14,10 @@ import {
 } from '../schemas/authenticate-body-schema'
 import { AuthenticateStudentUseCase } from '@/domain/forum/application/use-cases/authenticate-student'
 import { WrongCredentialsError } from '@/domain/forum/application/use-cases/errors/wrong-credentials-error'
+import { Public } from '@/infra/auth/public'
 
 @Controller('/sessions')
+@Public()
 export class AuthenticateController {
   constructor(
     private authenticateStudent: AuthenticateStudentUseCase,

@@ -4,14 +4,12 @@ import {
   Controller,
   HttpCode,
   Post,
-  UseGuards,
 } from '@nestjs/common'
 import { ZodValidationPipe } from '@/infra/http/pipes/zod-validation-pipe'
 import {
   CreateQuestionBodySchema,
   createQuestionBodySchema,
 } from '../schemas/create-question-schema'
-import { JwtAuthGuard } from '@/infra/auth/jwt-auth.guard'
 import { CurrentUser } from '@/infra/auth/current-user-decorator'
 import { UserPayloadSchema } from '../schemas/token-schema'
 import { CreateQuestionUseCase } from '@/domain/forum/application/use-cases/create-question'
@@ -19,7 +17,6 @@ import { CreateQuestionUseCase } from '@/domain/forum/application/use-cases/crea
 const bodyValidationPipe = new ZodValidationPipe(createQuestionBodySchema)
 
 @Controller('/questions')
-@UseGuards(JwtAuthGuard)
 export class CreateQuestionController {
   constructor(private createQuestion: CreateQuestionUseCase) {}
 
