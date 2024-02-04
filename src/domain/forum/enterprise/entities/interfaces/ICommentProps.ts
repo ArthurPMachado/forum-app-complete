@@ -4,7 +4,7 @@ export interface ICommentProps {
   authorId: UniqueEntityID
   content: string
   createdAt: Date
-  updatedAt?: Date
+  updatedAt?: Date | null
 }
 
 export interface IAnswerCommentProps extends ICommentProps {
