@@ -1,3 +1,4 @@
+import { Injectable } from '@nestjs/common'
 import {
   IDeleteAnswerCommentUseCaseRequest,
   IDeleteAnswerCommentUseCaseResponse,
@@ -7,6 +8,7 @@ import { ResourceNotFoundError } from '@/core/errors/errors/resource-not-found-e
 import { left, right } from '@/core/either'
 import { NotAllowedError } from '@/core/errors/errors/not-allowed-error'
 
+@Injectable()
 export class DeleteAnswerCommentUseCase {
   constructor(private answerCommentsRepository: IAnswerCommentsRepository) {}
 

@@ -1,3 +1,4 @@
+import { Injectable } from '@nestjs/common'
 import {
   ICommentOnAnswerUseCaseRequest,
   ICommentOnAnswerUseCaseResponse,
@@ -9,6 +10,7 @@ import { AnswerComment } from '../../enterprise/entities/answer-comment'
 import { left, right } from '@/core/either'
 import { ResourceNotFoundError } from '@/core/errors/errors/resource-not-found-error'
 
+@Injectable()
 export class CommentOnAnswerUseCase {
   constructor(
     private answersRepository: IAnswersRepository,

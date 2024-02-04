@@ -1,3 +1,4 @@
+import { Injectable } from '@nestjs/common'
 import { left, right } from '@/core/either'
 import { IAnswersRepository } from '../repositories/interfaces/answers-repository'
 import {
@@ -11,6 +12,7 @@ import { AnswerAttachmentList } from '../../enterprise/entities/answer-attachmen
 import { AnswerAttachment } from '../../enterprise/entities/answer-attachment'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 
+@Injectable()
 export class EditAnswerUseCase {
   constructor(
     private answersRepository: IAnswersRepository,

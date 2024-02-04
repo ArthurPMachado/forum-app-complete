@@ -1,3 +1,4 @@
+import { Injectable } from '@nestjs/common'
 import { left, right } from '@/core/either'
 import { IQuestionsRepository } from '../repositories/interfaces/questions-repository'
 import {
@@ -7,6 +8,7 @@ import {
 import { ResourceNotFoundError } from '@/core/errors/errors/resource-not-found-error'
 import { NotAllowedError } from '@/core/errors/errors/not-allowed-error'
 
+@Injectable()
 export class DeleteQuestionUseCase {
   constructor(private questionsRepository: IQuestionsRepository) {}
 

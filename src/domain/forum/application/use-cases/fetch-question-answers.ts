@@ -1,3 +1,4 @@
+import { Injectable } from '@nestjs/common'
 import { right } from '@/core/either'
 import { IAnswersRepository } from '../repositories/interfaces/answers-repository'
 import {
@@ -5,6 +6,7 @@ import {
   IFetchQuestionAnswersUseCaseResponse,
 } from './interfaces/IFetchQuestionAnswersUseCase'
 
+@Injectable()
 export class FetchQuestionAnswersUseCase {
   constructor(private answersRepository: IAnswersRepository) {}
 
