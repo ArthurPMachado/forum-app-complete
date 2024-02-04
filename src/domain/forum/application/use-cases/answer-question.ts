@@ -1,3 +1,4 @@
+import { Injectable } from '@nestjs/common'
 import {
   IAnswerQuestionUseCaseRequest,
   IAnswerQuestionUseCaseResponse,
@@ -8,7 +9,6 @@ import { Answer } from '../../enterprise/entities/answer'
 import { right } from '@/core/either'
 import { AnswerAttachment } from '../../enterprise/entities/answer-attachment'
 import { AnswerAttachmentList } from '../../enterprise/entities/answer-attachment-list'
-import { Injectable } from '@nestjs/common'
 
 @Injectable()
 export class AnswerQuestionUseCase {
