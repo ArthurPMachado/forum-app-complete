@@ -11,6 +11,7 @@ import {
   pageQueryParamSchema,
 } from '../schemas/page-query-param-schema'
 import { FetchQuestionAnswersUseCase } from '@/domain/forum/application/use-cases/fetch-question-answers'
+import { AnswerPresenter } from '../presenters/answer-presenter'
 
 const queryValidationPipe = new ZodValidationPipe(pageQueryParamSchema)
 
@@ -35,7 +36,7 @@ export class FetchQuestionAnswersController {
     const { answers } = result.value
 
     return {
-      answers,
+      answers: answers.map(AnswerPresenter.toHTTP),
     }
   }
 }
