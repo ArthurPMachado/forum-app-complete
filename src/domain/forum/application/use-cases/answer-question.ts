@@ -15,14 +15,14 @@ export class AnswerQuestionUseCase {
   constructor(private answersRepository: IAnswersRepository) {}
 
   async execute({
-    instructorId,
+    authorId,
     questionId,
     content,
     attachmentsIds,
   }: IAnswerQuestionUseCaseRequest): Promise<IAnswerQuestionUseCaseResponse> {
     const answer = Answer.create({
       content,
-      authorId: new UniqueEntityID(instructorId),
+      authorId: new UniqueEntityID(authorId),
       questionId: new UniqueEntityID(questionId),
     })
 
