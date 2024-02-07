@@ -5,7 +5,6 @@ import {
   HttpCode,
   Param,
   Put,
-  UsePipes,
 } from '@nestjs/common'
 import { ZodValidationPipe } from '@/infra/http/pipes/zod-validation-pipe'
 import {
@@ -16,15 +15,16 @@ import { CurrentUser } from '@/infra/auth/current-user-decorator'
 import { UserPayloadSchema } from '../schemas/token-schema'
 import { EditQuestionUseCase } from '@/domain/forum/application/use-cases/edit-question'
 
+const bodyValidationPipe = new ZodValidationPipe(editQuestionBodySchema)
+
 @Controller('/questions/:id')
 export class EditQuestionController {
   constructor(private editQuestion: EditQuestionUseCase) {}
 
   @Put()
   @HttpCode(204)
-  @UsePipes(new ZodValidationPipe(editQuestionBodySchema))
   async handle(
-    @Body() body: EditQuestionBodySchema,
+    @Body(bodyValidationPipe) body: EditQuestionBodySchema,
     @CurrentUser() user: UserPayloadSchema,
     @Param('id') questionId: string,
   ) {
