@@ -19,7 +19,7 @@ export class ChooseQuestionBestAnswerController {
   @HttpCode(204)
   async handle(
     @CurrentUser() user: UserPayloadSchema,
-    @Param('id') answerId: string,
+    @Param('answerId') answerId: string,
   ) {
     const { sub: userId } = user
 
