@@ -28,9 +28,9 @@ To run this project, it's necessary to prepare your environment, which means:
 ### Installing
 **Cloning the Repository**
 ```
-$ git clone git@github.com:ArthurPMachado/nest-clean.git
+$ git clone git@github.com:ArthurPMachado/forum-app-complete.git
 
-$ cd solid-node
+$ cd forum-app-complete
 ```
 **Installing dependencies**
 
@@ -40,6 +40,11 @@ $ pnpm i
 
 ### Running Project
 
+**Running migrations**
+```
+$ pnpm prisma migrate dev
+```
+**Running application**
 ```
 $ pnpm run dev
 ```
