@@ -6,7 +6,6 @@ import {
   UnauthorizedException,
   UsePipes,
 } from '@nestjs/common'
-import { JwtService } from '@nestjs/jwt'
 import { ZodValidationPipe } from '@/infra/http/pipes/zod-validation-pipe'
 import {
   AuthenticateBodySchema,
@@ -19,10 +18,7 @@ import { Public } from '@/infra/auth/public'
 @Controller('/sessions')
 @Public()
 export class AuthenticateController {
-  constructor(
-    private authenticateStudent: AuthenticateStudentUseCase,
-    private jwt: JwtService,
-  ) {}
+  constructor(private authenticateStudent: AuthenticateStudentUseCase) {}
 
   @Post()
   @UsePipes(new ZodValidationPipe(authenticateBodySchema))
