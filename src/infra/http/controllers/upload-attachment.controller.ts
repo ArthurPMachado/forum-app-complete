@@ -11,7 +11,7 @@ import {
 import { FileInterceptor } from '@nestjs/platform-express'
 
 @Controller('/attachments')
-export class UploadAttachment {
+export class UploadAttachmentController {
   // constructor() {}
 
   @Post()
