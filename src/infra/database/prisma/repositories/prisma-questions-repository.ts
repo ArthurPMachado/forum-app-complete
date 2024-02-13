@@ -4,13 +4,13 @@ import { Question } from '@/domain/forum/enterprise/entities/question'
 import { Injectable } from '@nestjs/common'
 import { PrismaService } from '../prisma.service'
 import { PrismaQuestionMapper } from '../mappers/prisma-question-mapper'
-import { PrismaQuestionAttachmentsRepository } from './prisma-question-attachments-repository'
+import { IQuestionAttachmentsRepository } from '@/domain/forum/application/repositories/interfaces/question-attachments-repository'
 
 @Injectable()
 export class PrismaQuestionsRepository implements IQuestionsRepository {
   constructor(
     private prisma: PrismaService,
-    private questionAttachmentsRepository: PrismaQuestionAttachmentsRepository,
+    private questionAttachmentsRepository: IQuestionAttachmentsRepository,
   ) {}
 
   async create(question: Question): Promise<void> {
