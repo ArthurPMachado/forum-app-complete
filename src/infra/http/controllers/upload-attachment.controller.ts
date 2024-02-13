@@ -1,6 +1,7 @@
 import {
   Controller,
   FileTypeValidator,
+  HttpCode,
   MaxFileSizeValidator,
   ParseFilePipe,
   Post,
@@ -14,6 +15,7 @@ export class UploadAttachment {
   // constructor() {}
 
   @Post()
+  @HttpCode(201)
   @UseInterceptors(FileInterceptor('file'))
   async handle(
     @UploadedFile(
