@@ -13,6 +13,7 @@ Layered Architecture, CloudFare R2 integration and some patterns like: Aggregati
 * NodeJS
 * NestJS
 * Prisma
+* CloudFare R2
 * JWT
 * Vitest + Supertest
 * Zod
