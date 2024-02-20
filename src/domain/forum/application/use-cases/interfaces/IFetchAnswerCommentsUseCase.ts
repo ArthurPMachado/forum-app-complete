@@ -1,5 +1,5 @@
 import { Either } from '@/core/either'
-import { AnswerComment } from '@/domain/forum/enterprise/entities/answer-comment'
+import { CommentWithAuthor } from '@/domain/forum/enterprise/entities/value-objects/comment-with-author'
 
 export interface IFetchAnswerCommentsUseCaseRequest {
   answerId: string
@@ -9,6 +9,6 @@ export interface IFetchAnswerCommentsUseCaseRequest {
 export type IFetchAnswerCommentsUseCaseResponse = Either<
   null,
   {
-    answerComments: AnswerComment[]
+    comments: CommentWithAuthor[]
   }
 >
