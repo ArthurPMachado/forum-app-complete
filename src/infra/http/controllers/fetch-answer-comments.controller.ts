@@ -11,7 +11,7 @@ import {
   pageQueryParamSchema,
 } from '../schemas/page-query-param-schema'
 import { FetchAnswerCommentsUseCase } from '@/domain/forum/application/use-cases/fetch-answer-comments'
-import { CommentPresenter } from '../presenters/comment-presenter'
+import { CommentWithAuthorPresenter } from '../presenters/comment-with-author-presenter'
 
 const queryValidationPipe = new ZodValidationPipe(pageQueryParamSchema)
 
@@ -33,10 +33,10 @@ export class FetchAnswerCommentsController {
       throw new BadRequestException()
     }
 
-    const { answerComments } = result.value
+    const { comments } = result.value
 
     return {
-      comments: answerComments.map(CommentPresenter.toHTTP),
+      comments: comments.map(CommentWithAuthorPresenter.toHTTP),
     }
   }
 }
