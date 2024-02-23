@@ -7,6 +7,7 @@ import { PrismaQuestionMapper } from '../mappers/prisma-question-mapper'
 import { IQuestionAttachmentsRepository } from '@/domain/forum/application/repositories/interfaces/question-attachments-repository'
 import { QuestionDetails } from '@/domain/forum/enterprise/entities/value-objects/question-details'
 import { PrismaQuestionDetailsMapper } from '../mappers/prisma-question-details-mapper'
+import { DomainEvents } from '@/core/events/domain-events'
 
 @Injectable()
 export class PrismaQuestionsRepository implements IQuestionsRepository {
@@ -25,6 +26,8 @@ export class PrismaQuestionsRepository implements IQuestionsRepository {
     await this.questionAttachmentsRepository.createMany(
       question.attachments.getItems(),
     )
+
+    DomainEvents.dispatchEventsForAggregate(question.id)
   }
 
   async findBySlug(slug: string): Promise<Question | null> {
@@ -110,5 +113,7 @@ export class PrismaQuestionsRepository implements IQuestionsRepository {
         question.attachments.getRemovedItems(),
       ),
     ])
+
+    DomainEvents.dispatchEventsForAggregate(question.id)
   }
 }
