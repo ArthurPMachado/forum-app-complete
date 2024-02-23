@@ -2,6 +2,9 @@ import { faker } from '@faker-js/faker'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 import { INotificationProps } from '@/domain/notification/enterprise/entities/interfaces/INotificationProps'
 import { Notification } from '@/domain/notification/enterprise/entities/notification'
+import { Injectable } from '@nestjs/common'
+import { PrismaService } from '@/infra/database/prisma/prisma.service'
+import { PrismaNotificationMapper } from '@/infra/database/prisma/mappers/prisma-notification-mapper'
 
 export function makeNotification(
   override: Partial<INotificationProps> = {},
@@ -18,4 +21,21 @@ export function makeNotification(
   )
 
   return notification
+}
+
+@Injectable()
+export class NotificationFactory {
+  constructor(private prisma: PrismaService) {}
+
+  async makePrismaNotification(
+    data: Partial<INotificationProps> = {},
+  ): Promise<Notification> {
+    const notification = makeNotification(data)
+
+    await this.prisma.notification.create({
+      data: PrismaNotificationMapper.toPrisma(notification),
+    })
+
+    return notification
+  }
 }
