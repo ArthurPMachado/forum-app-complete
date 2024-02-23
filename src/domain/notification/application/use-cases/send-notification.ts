@@ -6,7 +6,9 @@ import {
 } from './interfaces/ISendNotificationUseCase'
 import { Notification } from '../../enterprise/entities/notification'
 import { INotificationsRepository } from '../repositories/interfaces/notifications-repository'
+import { Injectable } from '@nestjs/common'
 
+@Injectable()
 export class SendNotificationUseCase {
   constructor(private notificationsRepository: INotificationsRepository) {}
 

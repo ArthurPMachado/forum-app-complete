@@ -5,5 +5,5 @@ export interface INotificationProps {
   title: string
   content: string
   createdAt: Date
-  readAt?: Date
+  readAt?: Date | null
 }
